@@ -6,7 +6,7 @@ function factory (type, config, load, typed) {
    * 
    * Syntax:
    * 
-   *    math.linspace(start, end [, num=100, endpoint=True])
+   *    math.linspace(start, end [, num=100])
    * 
    * Examples:
    * 
@@ -24,6 +24,35 @@ function factory (type, config, load, typed) {
    * @param   {boolean} endpoint  If True, `end` is the last sample. Otherwise it is not included. Default is True.
    * @return  {Array}             Returns an array of evenly spaced numbers over a specified interval.
   */
+
+  const linspace = typed('linspace', {
+    'number, number': function (start, end) {
+
+    },
+    'number, number, number': function(start, end, num) {
+
+    },
+    'BigNumber, BigNumber': function (start, end) {
+
+    },
+    'BigNumber, BigNumber, BigNumber': function(start, end, num) {
+
+    }
+  }
+
+  )
+
+  linspace.toTex = undefined // use default template
+
+  return linspace
+
+  function _out (arr) {
+    return config.matrix === 'Array' ? arr : matrix(arr)
+  }
+
+  function _linspace(start, end, num) {
+    
+  }
 }
 
 
